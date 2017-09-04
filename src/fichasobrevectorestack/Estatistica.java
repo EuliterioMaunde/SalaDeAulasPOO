@@ -5,6 +5,7 @@
  */
 package fichasobrevectorestack;
 
+import java.util.List;
 import java.util.Vector;
 
 /**
@@ -60,12 +61,19 @@ public class Estatistica {
          * O metodo calcularMediana recebe um Vector do tipo double e calcula o valor da mediana dos valores contidos no Vector
          * 
          */
-        public double calcularMediana(Vector<Double> vector){
+        
+       
+        public double calcularMediana(Vector<Double> vector){   
+         vector.sort((o1, o2) -> {
+                return (01>02) ? 1 : (01==02) ? 0 : -1;
+            });
+            
             if(vector.size()%2==0) return (vector.get(vector.size()-1/2)+ vector.get(vector.size()/2))/2;
             else return vector.get((vector.size()/2)); //size() vs capacity();
         }
     
         public static void main(String[] args) {
+            
         
     }
 }
