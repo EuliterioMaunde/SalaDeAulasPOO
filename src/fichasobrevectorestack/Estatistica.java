@@ -10,7 +10,7 @@ import java.util.Vector;
 
 /**
  *
- * @author Toni Maunde
+ * @author Toni Maunde & Assane Mateus
  * Esta classe contem metodos que calculam os valores de tendencia central como Media, Moda e Mediana em vectores 
  */
 public class Estatistica {
@@ -40,15 +40,20 @@ public class Estatistica {
          * O metodo calcularModa recebe um Vector do tipo double e verifica a moda no vector
          */
         public double calcularModa(Vector<Double> vector){
-            int i, j, contador=0;
-            double moda;
+            int i, j, contador=1;
             
+            Vector<Integer> vectoraux= new Vector<>();
             
             for(i=0; i<vector.size();i++){
-                for(j=0; j<vector.size(); j++){
+                for(j=1; j<vector.size()-1; j++){
                     if(vector.get(i)==vector.get(j)) contador++;
+                    
                 }
-                if(contador>vector.size()/2) return vector.get(i);
+                vectoraux.add(contador);
+            }
+            for (int k = 0; k < vectoraux.size(); k++) {
+                
+                
             }
             
             return -1;//A moda e AMODAL
@@ -73,7 +78,7 @@ public class Estatistica {
         }
     
         public static void main(String[] args) {
-            
+                
         
     }
 }
