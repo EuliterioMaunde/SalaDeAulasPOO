@@ -9,7 +9,7 @@ import java.util.Vector;
 
 /**
  *
- * @author Toni Maunde
+ * @author Toni Maunde & Assane Mateus
  */
 public class Exercicio4 {
     

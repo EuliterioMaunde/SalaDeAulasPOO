@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Toni Maunde
+ * @author Toni Maunde & Assane Mateus
  * Classe que contem um metodo para ordenar um vector de doubles copiando os maiores valores e jogando na ultima posicao livre de outro vector
  */
 public class Exercicio5 {
@@ -29,6 +29,8 @@ public class Exercicio5 {
             for(i=1;i<vector.size(); i++){
                 if(maior<=vector.get(i)) maior=vector.get(i);
             }
+            
+            vector.
             vector1.setElementAt(maior, tamanho-1);
             tamanho--;
         }
