@@ -28,6 +28,14 @@ public class Professor {
     @Column
     private Date dataDeNascimento;
 
+    public Professor(String nome, String estadoCivil, String cadeira, Date dataDeNascimento) {
+        this.nome = nome;
+        this.estadoCivil = estadoCivil;
+        this.cadeira = cadeira;
+        this.dataDeNascimento = dataDeNascimento;
+    }
+
+    
     
     public Long getId() {
         return id;
