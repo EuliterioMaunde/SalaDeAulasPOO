@@ -7,6 +7,7 @@ package fichadeclassesabstractastpc;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 /**
@@ -15,8 +16,10 @@ import javax.persistence.Id;
  */
 @Entity
 public class ModeloContaBancaria {
-   @Column
     @Id
+    @GeneratedValue
+    private long id;
+    @Column
     private int numeroDaConta;
    @Column
     private double saldo;
@@ -28,6 +31,15 @@ public class ModeloContaBancaria {
     public void setNumeroDaConta(int numeroDaConta) {
         this.numeroDaConta = numeroDaConta;
     }
+
+    public double getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(double saldo) {
+        this.saldo = saldo;
+    }
+    
     
     
 }
