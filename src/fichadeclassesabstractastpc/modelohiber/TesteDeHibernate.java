@@ -16,6 +16,32 @@ import org.hibernate.SessionFactory;
  */
 public class TesteDeHibernate {
     
+    private static void gravarDados(){
+        
+    }
+    
+    private static void actualizar(Session sessao, int i){
+        Professor temp;
+        temp=(Professor)sessao.get(Professor.class, i);
+        temp.setNome("Alfredo");
+        sessao.update(temp);
+    }
+    
+    private static void apagar(){
+        SessionFactory s= NewHiber.getSessionFactory();
+        Session sessao = s.openSession();
+        sessao.beginTransaction();
+        
+        Professor temp;
+        temp=(Professor)sessao.get(Professor.class, 2);
+        sessao.delete(temp);
+        
+        sessao.getTransaction().commit();
+        sessao.close();
+        s.close();
+        
+    }
+    
     private static void fecharSessao(Session sessao, SessionFactory s){
         sessao.getTransaction().commit();
         sessao.close();
@@ -23,9 +49,7 @@ public class TesteDeHibernate {
     }
     
     public static void main(String[] args) {
-        SessionFactory s= NewHiber.getSessionFactory();
-        Session sessao = s.openSession();
-        sessao.beginTransaction();
+        
         
         int resposta;
         do{
@@ -38,7 +62,7 @@ public class TesteDeHibernate {
                     String cadeira=JOptionPane.showInputDialog("Cadeira: ");
                     String estadoCivil=JOptionPane.showInputDialog("Estado civil: ");
                     Professor docente= new Professor(nome, estadoCivil, cadeira, data);
-                    sessao.save(docente);
+                    //sessao.save(docente);
                 }break;
                 
                 case 2:{
@@ -48,17 +72,17 @@ public class TesteDeHibernate {
                 }break;
                 
                 case 3:{
-                    
+                    apagar();
                 }break;
                 
                 case 4:{
+                    //actualizar(sessao, 4);
                     
                 }break;
                 
                 case 5:{
-                    fecharSessao(sessao, s);
                     System.exit(0);
-                }
+                }break;
             }
         }while(resposta!=100);
         
