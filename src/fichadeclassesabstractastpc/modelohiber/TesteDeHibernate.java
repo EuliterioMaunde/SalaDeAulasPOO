@@ -17,6 +17,7 @@ import org.hibernate.SessionFactory;
 public class TesteDeHibernate {
     
     
+    
     private static void gravarDados(){
         SessionFactory s= NewHibernateUtil.getSessionFactory();
         Session sessao = s.openSession();
@@ -34,7 +35,7 @@ public class TesteDeHibernate {
         s.close();
     }
     
-    private static void actualizar(int i){
+    private static void actualizarNome(Long i){
         SessionFactory s= NewHibernateUtil.getSessionFactory();
         Session sessao = s.openSession();
         sessao.beginTransaction();
@@ -49,6 +50,56 @@ public class TesteDeHibernate {
         sessao.close();
         s.close();
         
+    }
+    
+    private static void actualizarEstadoCivil(Long i, String estadoCivil){
+        SessionFactory s= NewHibernateUtil.getSessionFactory();
+        Session sessao = s.openSession();
+        sessao.beginTransaction();
+        
+        Professor temp;
+        temp=(Professor)sessao.get(Professor.class, i);
+        temp.setEstadoCivil(estadoCivil);
+        sessao.update(temp);
+        
+        
+        sessao.getTransaction().commit();
+        sessao.close();
+        s.close();
+        
+    }
+    
+    private static void actualizarCadeira(Long i, String cadeira){
+        SessionFactory s= NewHibernateUtil.getSessionFactory();
+        Session sessao = s.openSession();
+        sessao.beginTransaction();
+        
+        Professor temp;
+        temp=(Professor)sessao.get(Professor.class, i);
+        temp.setCadeira(cadeira);
+        sessao.update(temp);
+        
+        
+        sessao.getTransaction().commit();
+        sessao.close();
+        s.close();
+        
+    }
+    
+    private static void pesquisar(Long ID){
+        SessionFactory s= NewHibernateUtil.getSessionFactory();
+        Session sessao = s.openSession();
+        sessao.beginTransaction();
+        
+        Professor temp;
+        temp=(Professor)sessao.get(Professor.class, ID);
+        JOptionPane.showMessageDialog(null, temp.toString());
+        sessao.update(temp);
+        
+        
+        sessao.getTransaction().commit();
+        sessao.close();
+        s.close();
     }
     
     private static void apagar(){
@@ -72,7 +123,7 @@ public class TesteDeHibernate {
        
         int resposta;
         do{
-            resposta=Integer.parseInt(JOptionPane.showInputDialog("1.Registar \n2.Pesquisar \n4.Actualizar \n4.Apagar \n5.Sair"));
+            resposta=Integer.parseInt(JOptionPane.showInputDialog("1.Registar \n2.Pesquisar \n3.Actualizar \n4.Apagar \n5.Sair"));
             
             switch(resposta){
                 case 1:{
@@ -80,12 +131,12 @@ public class TesteDeHibernate {
                 }break;
                 
                 case 2:{
-           
+                    pesquisar(3L);
                     
                 }break;
                 
                 case 3:{
-                    actualizar(2);
+                    //actualizar(3L);
                 }break;
                 
                 case 4:{

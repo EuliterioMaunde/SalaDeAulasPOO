@@ -27,7 +27,10 @@ public class Professor {
     private String cadeira;
     @Column
     private Date dataDeNascimento;
-
+     
+    public Professor(){
+        
+    }
     public Professor(String nome, String estadoCivil, String cadeira, Date dataDeNascimento) {
         this.nome = nome;
         this.estadoCivil = estadoCivil;
@@ -71,6 +74,11 @@ public class Professor {
 
     public void setDataDeNascimento(Date dataDeNascimento) {
         this.dataDeNascimento = dataDeNascimento;
+    }
+
+    @Override
+    public String toString() {
+        return "ID " + id + "\nNome " + nome + "\nEstado Civil " + estadoCivil + "\nCadeira " + cadeira + "\nData De Nascimento " + dataDeNascimento;
     }
     
     

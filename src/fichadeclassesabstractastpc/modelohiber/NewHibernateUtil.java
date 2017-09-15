@@ -5,6 +5,8 @@
  */
 package fichadeclassesabstractastpc.modelohiber;
 
+import net.sf.ehcache.hibernate.HibernateUtil;
+import org.hibernate.Hibernate;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
 
@@ -12,7 +14,7 @@ import org.hibernate.cfg.AnnotationConfiguration;
  *
  * @author Toni Maunde
  */
-public class NewHiber {
+public class NewHibernateUtil {
     
     private static final SessionFactory SESSAO;
     
