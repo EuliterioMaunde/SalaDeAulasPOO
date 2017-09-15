@@ -16,19 +16,43 @@ import org.hibernate.SessionFactory;
  */
 public class TesteDeHibernate {
     
+    
     private static void gravarDados(){
+        SessionFactory s= NewHibernateUtil.getSessionFactory();
+        Session sessao = s.openSession();
+        sessao.beginTransaction();
         
+        String nome=JOptionPane.showInputDialog("Nome: ");
+        Date data= java.sql.Date.valueOf(JOptionPane.showInputDialog("Data de nascimento (Ano-Mes-Dia) "));
+        String cadeira=JOptionPane.showInputDialog("Cadeira: ");
+        String estadoCivil=JOptionPane.showInputDialog("Estado civil: ");
+        Professor docente= new Professor(nome, estadoCivil, cadeira, data);
+        sessao.save(docente);
+        
+        sessao.getTransaction().commit();
+        sessao.close();
+        s.close();
     }
     
-    private static void actualizar(Session sessao, int i){
+    private static void actualizar(int i){
+        SessionFactory s= NewHibernateUtil.getSessionFactory();
+        Session sessao = s.openSession();
+        sessao.beginTransaction();
+        
         Professor temp;
         temp=(Professor)sessao.get(Professor.class, i);
         temp.setNome("Alfredo");
         sessao.update(temp);
+        
+        
+        sessao.getTransaction().commit();
+        sessao.close();
+        s.close();
+        
     }
     
     private static void apagar(){
-        SessionFactory s= NewHiber.getSessionFactory();
+        SessionFactory s= NewHibernateUtil.getSessionFactory();
         Session sessao = s.openSession();
         sessao.beginTransaction();
         
@@ -42,41 +66,30 @@ public class TesteDeHibernate {
         
     }
     
-    private static void fecharSessao(Session sessao, SessionFactory s){
-        sessao.getTransaction().commit();
-        sessao.close();
-        s.close();
-    }
     
     public static void main(String[] args) {
         
-        
+       
         int resposta;
         do{
-            resposta=Integer.parseInt(JOptionPane.showInputDialog("1.Registar \n2.Pesquisar \n3.Apagar \n4.Actualizar \n5.Sair"));
+            resposta=Integer.parseInt(JOptionPane.showInputDialog("1.Registar \n2.Pesquisar \n4.Actualizar \n4.Apagar \n5.Sair"));
             
             switch(resposta){
                 case 1:{
-                    String nome=JOptionPane.showInputDialog("Nome: ");
-                    Date data= java.sql.Date.valueOf(JOptionPane.showInputDialog("Data de nascimento (Ano-Mes-Dia) "));
-                    String cadeira=JOptionPane.showInputDialog("Cadeira: ");
-                    String estadoCivil=JOptionPane.showInputDialog("Estado civil: ");
-                    Professor docente= new Professor(nome, estadoCivil, cadeira, data);
-                    //sessao.save(docente);
+                    gravarDados();
                 }break;
                 
                 case 2:{
-                    String nome=JOptionPane.showInputDialog("Nome a pesquisar: ");
-                    
+           
                     
                 }break;
                 
                 case 3:{
-                    apagar();
+                    actualizar(2);
                 }break;
                 
                 case 4:{
-                    //actualizar(sessao, 4);
+                    apagar();
                     
                 }break;
                 
@@ -86,24 +99,6 @@ public class TesteDeHibernate {
             }
         }while(resposta!=100);
         
-        
-        
-        
-//        Professor docente = new Professor();
-//        docente.setCadeira("POO");
-//        docente.setEstadoCivil("Casado");
-//        docente.setNome("Marco Cangela");
-//        docente.setDataDeNascimento(java.sql.Date.valueOf("1980-06-18"));
-//        
-//        Professor docentee = new Professor();
-//        docentee.setCadeira("EDA");
-//        docentee.setDataDeNascimento(java.sql.Date.valueOf("1981-01-01"));
-//        docentee.setEstadoCivil("Casado");
-//        docentee.setNome("Herquiloide Hele");
-        
-        //Adicionando um professor a tabela de professores
-//        sessao.save(docente);
-//        sessao.save(docentee);
         
     }
     
