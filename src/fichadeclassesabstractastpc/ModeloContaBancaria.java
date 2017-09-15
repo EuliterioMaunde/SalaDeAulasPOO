@@ -7,6 +7,7 @@ package fichadeclassesabstractastpc;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 
 /**
  *
@@ -15,9 +16,18 @@ import javax.persistence.Entity;
 @Entity
 public class ModeloContaBancaria {
    @Column
+    @Id
     private int numeroDaConta;
    @Column
     private double saldo;
+
+    public int getNumeroDaConta() {
+        return numeroDaConta;
+    }
+
+    public void setNumeroDaConta(int numeroDaConta) {
+        this.numeroDaConta = numeroDaConta;
+    }
     
     
 }
