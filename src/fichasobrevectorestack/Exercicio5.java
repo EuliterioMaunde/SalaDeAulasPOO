@@ -30,7 +30,6 @@ public class Exercicio5 {
                 if(maior<=vector.get(i)) maior=vector.get(i);
             }
             
-            vector.
             vector1.setElementAt(maior, tamanho-1);
             tamanho--;
         }

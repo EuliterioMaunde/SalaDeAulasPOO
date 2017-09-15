@@ -6,14 +6,14 @@
 package fichadeclassesabstractastpc.modelohiber;
 
 import java.sql.Date;
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+
 
 /**
  *
  * @author Toni Maunde
  */
+@Entity
 public class Professor {
     
     @Id
