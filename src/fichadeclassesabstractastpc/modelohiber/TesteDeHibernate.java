@@ -108,7 +108,8 @@ public class TesteDeHibernate {
         sessao.beginTransaction();
         
         Professor temp;
-        temp=(Professor)sessao.get(Professor.class, 2);
+        temp=(Professor)sessao.get(Professor.class, 2L);
+        
         sessao.delete(temp);
         
         sessao.getTransaction().commit();
